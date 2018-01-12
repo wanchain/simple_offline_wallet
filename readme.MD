@@ -1,12 +1,16 @@
 # Wanchain simple offline wallet
 
-## How to set config.js
-
-   - keyStorePath:  set your local keyStore path
-   
+## Dependencies
+   node > v8.x
+   npm  > v5.x
 ## Prepare
     
     $ npm install
+    
+## How to set config.js
+
+   - keyStorePath:  set your local keyStore path
+       
 ## How to batch signed transaction data and send
 
         $ cd batch
