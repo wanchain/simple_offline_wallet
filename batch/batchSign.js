@@ -1,6 +1,6 @@
 const fs = require('fs');
 let sendList = JSON.parse(fs.readFileSync('./sendListWithNonce.json'));
-let password = '1111111111';
+
 let normalTrans = require('../interface/transaction.js').NormalSend;
 let privateKey = require('../Accounts/privateKey.js');
 let PrivacySend = require('../transactions/privacyTrans.js');
@@ -8,7 +8,10 @@ let refundOTASend = require('../transactions/refundOTASend.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
+
+let password = 'wanglu';
 let fromKey = new privateKey(sendList.from,password);
+
 if(fromKey.AKey)
 {
     if(sendList.normal && sendList.normal.length)
@@ -25,7 +28,7 @@ if(fromKey.AKey)
     if(sendList.ChargePrivacyCoin && sendList.ChargePrivacyCoin.length) {
         for (var i = 0; i < sendList.ChargePrivacyCoin.length; i++, nonce++) {
             let item = sendList.ChargePrivacyCoin[i];
-            let privacy = new PrivacySend(sendList.from, item.to, new CoinAmount(item.amount), nonce);
+            let privacy = new PrivacySend(sendList.from, item.to, new CoinAmount(item.facevalue), nonce);
             let data = privacy.sign(fromKey.AKey);
             dataArray.push(data);
         }
