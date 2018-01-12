@@ -11,26 +11,32 @@ let dataArray = [];
 let fromKey = new privateKey(sendList.from,password);
 if(fromKey.AKey)
 {
-    for(var i=0;i<sendList.normal.length;i++,nonce++)
+    if(sendList.normal && sendList.normal.length)
     {
-        let item =sendList.normal[i];
-        let newSend = new normalTrans(sendList.from,item.to,new CoinAmount(item.amount),nonce);
-        let data = newSend.sign(fromKey.AKey);
-        dataArray.push(data);
+        for(var i=0;i<sendList.normal.length;i++,nonce++)
+        {
+            let item =sendList.normal[i];
+            let newSend = new normalTrans(sendList.from,item.to,new CoinAmount(item.amount),nonce);
+            let data = newSend.sign(fromKey.AKey);
+            dataArray.push(data);
+        }
     }
 
-    for(var i=0;i<sendList.privacy.length;i++,nonce++)
-    {
-        let item =sendList.privacy[i];
-        let privacy = new PrivacySend(sendList.from,item.to,new CoinAmount(item.amount),nonce);
-        let data = privacy.sign(fromKey.AKey);
-        dataArray.push(data);
+    if(sendList.privacy && sendList.privacy.length) {
+        for (var i = 0; i < sendList.privacy.length; i++, nonce++) {
+            let item = sendList.privacy[i];
+            let privacy = new PrivacySend(sendList.from, item.to, new CoinAmount(item.amount), nonce);
+            let data = privacy.sign(fromKey.AKey);
+            dataArray.push(data);
+        }
     }
-    for(var i=0;i<sendList.refund.length;i++,nonce++) {
-        let item = sendList.refund[i];
-        let refundOTA = new refundOTASend(sendList.from, fromKey, item.OTA, new CoinAmount(item.amount), item.OTAset, nonce);
-        let data = refundOTA.sign(fromKey.AKey);
-        dataArray.push(data);
+    if(sendList.refund && sendList.refund.length) {
+        for (var i = 0; i < sendList.refund.length; i++, nonce++) {
+            let item = sendList.refund[i];
+            let refundOTA = new refundOTASend(sendList.from, fromKey, item.OTA, new CoinAmount(item.amount), item.OTAset, nonce);
+            let data = refundOTA.sign(fromKey.AKey);
+            dataArray.push(data);
+        }
     }
 }
 else
