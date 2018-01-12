@@ -1,0 +1,10 @@
+let buyStampSend = require('../transactions/buyStampSend.js');
+let to = require('../Accounts/address.js').towaddress;
+let from = require('../Accounts/address.js').fromaddress;
+let password = require('../Accounts/password.js').password;
+let CoinAmount = require('../interface/Amount.js').CoinAmount;
+let nonce = 311;
+let stampAmount = new CoinAmount(0.2);
+let buyStamp = new buyStampSend(from.account1,stampAmount,nonce);
+let data = buyStamp.signFromKeystore(password.password1);
+console.log(data);

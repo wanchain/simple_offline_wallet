@@ -1,0 +1,10 @@
+let from = require('../Accounts/address.js').fromaddress;
+let to = require('../Accounts/address.js').toaddress;
+let password = require('../Accounts/password.js').password;
+let CoinAmount = require('../interface/Amount.js').CoinAmount;
+let sendAmount = new CoinAmount(200);
+let nonce = 309;
+let normalTrans = require('../interface/transaction.js').NormalSend;
+let newSend = new normalTrans(from.account1,to.fanghua,sendAmount,nonce);
+let data = newSend.signFromKeystore(password.password1);
+console.log(data);

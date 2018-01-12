@@ -1,0 +1,11 @@
+let wanTokenSend = require('../transactions/wanTokenSend.js');
+let to = require('../Accounts/address.js').toaddress;
+let from = require('../Accounts/address.js').fromaddress;
+let token = require('../Accounts/address.js').tokenAddress;
+let password = require('../Accounts/password.js').password;
+let CoinAmount = require('../interface/Amount.js').CoinAmount;
+let sendAmount = new CoinAmount(200);
+let nonce = 312;
+let newSend = new wanTokenSend(from.account1,to.fanghua,token.wan,sendAmount,nonce);
+let data = newSend.signFromKeystore(password.password1);
+console.log(data);

@@ -1,0 +1,12 @@
+let OTA = require('../Accounts/OTAs.js').refundOTA;
+let OTASet = require('../Accounts/OTAs.js').OTAset;
+let from = require('../Accounts/address.js').fromaddress;
+let password = require('../Accounts/password.js').password;
+let CoinAmount = require('../interface/Amount.js').CoinAmount;
+let nonce = 70;
+let refundOTASend = require('../transactions/refundOTASend.js');
+let privateKey = require('../Accounts/privateKey.js');
+let fromKey = new privateKey(from.account2,password.password1);
+let refundOTA = new refundOTASend(from.account2,fromKey,OTA.OTA1.OTA,new CoinAmount(OTA.OTA1.amount),OTASet.OTAset1,nonce);
+let data = refundOTA.signFromKeystore(password.password1);
+console.log(data);
