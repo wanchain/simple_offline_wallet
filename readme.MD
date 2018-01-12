@@ -1,4 +1,4 @@
-# Wanchain local sign Transaction
+# Wanchain simple offline wallet
 
 ## How to set config.js
 
