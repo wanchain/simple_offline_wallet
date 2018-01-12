@@ -3,7 +3,8 @@ let GWeiAmount = require("./Amount.js").GWeiAmount;
 let keyStore = require("../Accounts/keyStore.js");
 let wanUtil = require('wanchain-util');
 var Tx = wanUtil.wanchainTx;
-let gasPrice = new GWeiAmount(180);
+let config = require('../config.js');
+let gasPrice = new GWeiAmount(config.gasPrice);
 class ITrans {
     constructor()
     {
@@ -12,7 +13,7 @@ class ITrans {
         this.to = null;
         this.value = 0;
         this.gasPrice = gasPrice.getWei();
-        this.gas = 21000;
+        this.gas = config.gas;
         this.data = null;
         this.nonce = 0;
     }
