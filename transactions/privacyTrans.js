@@ -15,7 +15,9 @@ class PrivacySend extends TokenSend
         this.Contract = new PrivacyContract();
         this.trans.setTo(this.Contract.tokenAddress);
         let otaAddress = new CreateOTAAddress(toWaddress);
+        console.log("send privacy wancoin value :" + CoinAmount.getAmount() + " for  ota address:" + otaAddress.waddress);
         this.trans.setData(this.Contract.getData(otaAddress.waddress,CoinAmount));
+        this.trans.setGas(600000);
     }
 }
 module.exports = PrivacySend;

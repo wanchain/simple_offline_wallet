@@ -1,5 +1,5 @@
 const fs = require('fs');
-let sendList = JSON.parse(fs.readFileSync('./sendList.json'));
+let sendList = JSON.parse(fs.readFileSync('./sendListWithNonce.json'));
 let password = '1111111111';
 let normalTrans = require('../interface/transaction.js').NormalSend;
 let privateKey = require('../Accounts/privateKey.js');
@@ -22,9 +22,9 @@ if(fromKey.AKey)
         }
     }
 
-    if(sendList.privacy && sendList.privacy.length) {
-        for (var i = 0; i < sendList.privacy.length; i++, nonce++) {
-            let item = sendList.privacy[i];
+    if(sendList.ChargePrivacyCoin && sendList.ChargePrivacyCoin.length) {
+        for (var i = 0; i < sendList.ChargePrivacyCoin.length; i++, nonce++) {
+            let item = sendList.ChargePrivacyCoin[i];
             let privacy = new PrivacySend(sendList.from, item.to, new CoinAmount(item.amount), nonce);
             let data = privacy.sign(fromKey.AKey);
             dataArray.push(data);
@@ -41,7 +41,7 @@ if(fromKey.AKey)
 }
 else
 {
-    console.log('password is error!');
+    console.log('password is error or something wrong!');
 }
 
 

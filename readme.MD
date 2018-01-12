@@ -117,3 +117,15 @@
 
      $ node sendToken.js
 
+
+### Preset coin face value
+
+10 WAN
+20 WAN
+50 WAN
+100 WAN
+200 WAN
+500 WAN
+1000 WAN
+5000 WAN
+50000 WAN

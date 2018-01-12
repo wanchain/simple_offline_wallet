@@ -11,22 +11,24 @@ web3.eth.getTransactionCount(sendList.from,function (err,result) {
         console.log(result);
         sendList.nonce = result;
         let OTALoop = new ASyncLoopStack(1);
-        OTALoop.Array = sendList.refund;
-        OTALoop.EachFunc = function (param,item,index) {
-            web3.wan.getOTAMixSet(item.OTA,config.RingSignMixNum,function (err,result) {
-                if(!err)
-                {
-                    item.OTAset = result;
-                }
-                else
-                {
-                    console.log(err.message);
-                }
-                OTALoop.stepNext();
-            })
+        if (sendList.refund != null){
+            OTALoop.Array = sendList.refund;
+            OTALoop.EachFunc = function (param,item,index) {
+                web3.wan.getOTAMixSet(item.OTA,config.RingSignMixNum,function (err,result) {
+                    if(!err)
+                    {
+                        item.OTAset = result;
+                    }
+                    else
+                    {
+                        console.log(err.message);
+                    }
+                    OTALoop.stepNext();
+                })
+            }
         }
         OTALoop.EndFunc = function () {
-            fs.writeFileSync('./sendList.json',JSON.stringify(sendList,null,2),"utf8");
+            fs.writeFileSync('./sendListWithNonce.json',JSON.stringify(sendList,null,4),"utf8");
             process.exit();
         }
         OTALoop.run();
