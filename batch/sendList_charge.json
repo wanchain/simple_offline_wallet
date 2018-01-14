@@ -1,27 +1,4 @@
 {
-  "from": "0x2912bCf72eF78AAAe7A922DC507E11a28Ca890e8",
-  "normal": [
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 1
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 2
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 3
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 4
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 5
-    }
-  ],
   "ChargePrivacyCoin": [
     {
       "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
@@ -58,12 +35,6 @@
     {
       "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
       "facevalue": 50000
-    }
-  ],
-  "refund": [
-    {
-      "OTA": "0x03f1db730485069cc94f92f4b2e439d9fe3fe5be2929b13061284c754226b04a7302cd9036e743cc10dc6b6e027065c54ec384c4ec16d9d56d6a7a1a7deb89d9e345",
-      "amount": 50000
     }
   ]
 }

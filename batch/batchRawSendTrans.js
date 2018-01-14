@@ -24,6 +24,8 @@ transLoop.EachFunc = function (param,item,index) {
 }
 transLoop.EndFunc = function () {
     console.log("send Transaction complete!");
+    fs.writeFileSync('./transHash.json',JSON.stringify(tranHashArray,null,2),"utf8");
+    console.log('transHash transaction data has been written in file ./transHash.json');
     process.exit();
 }
 transLoop.run();
