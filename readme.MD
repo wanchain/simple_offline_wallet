@@ -95,6 +95,9 @@
             
    - Sign the transactions list.
    - The result file is 'signTx.json'
+   - The Privacy OTA balance Info File is 'current Date + _OTABalance.json"
+   
+            For example: 2018-1-15-10-14-56_OTABalance.json
    
    ### finally: Connect web3 and run `node batchRawSendTrans.js`
    

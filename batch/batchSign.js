@@ -8,7 +8,7 @@ let refundOTASend = require('../transactions/refundOTASend.js');
 let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
-
+let OTAArray = [];
 let password = 'wanglu';
 let fromKey = new privateKey(sendList.from,password);
 
@@ -31,6 +31,7 @@ if(fromKey.AKey)
             let privacy = new PrivacySend(sendList.from, item.to, new CoinAmount(item.facevalue), nonce);
             let data = privacy.sign(fromKey.AKey);
             dataArray.push(data);
+            OTAArray.push(privacy.OTAinfo);
         }
     }
     if(sendList.refund && sendList.refund.length) {
@@ -58,4 +59,15 @@ if(nPos>0)
 */
 fs.writeFileSync('./signTx.json',JSON.stringify(dataArray,null,2),"utf8");
 console.log('Signed transaction data has been written in file ./signTx.json');
+if(OTAArray.length)
+{
+    let date = new Date();
+    let test1 = date.toLocaleString();
+    test1 = test1.replace(' ', '-');
+    test1 = test1.replace(':', '-');
+    test1 = test1.replace(':', '-');
+    let fileName = './' + test1 + '_OTABalance.json';
+        fs.writeFileSync(fileName,JSON.stringify(OTAArray,null,2),"utf8");
+    console.log('Signed transaction data has been written in file ' + fileName);
+}
 process.exit();
