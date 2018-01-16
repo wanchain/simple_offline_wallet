@@ -3,15 +3,18 @@ const fs = require('fs');
 let config = require('../config.js');
 let ASyncLoopStack = require('./ASyncLoopStack.js');
 let sendList = JSON.parse(fs.readFileSync('./sendList.json'));
-let sendList_charge = JSON.parse(fs.readFileSync('./sendList_charge.json'));
-if(sendList_charge && sendList_charge.ChargePrivacyCoin)
-{
-    sendList.ChargePrivacyCoin = sendList_charge.ChargePrivacyCoin;
+if(fs.existsSync('./sendList_charge.json')){
+    let sendList_charge = JSON.parse(fs.readFileSync('./sendList_charge.json'));
+    if(sendList_charge && sendList_charge.ChargePrivacyCoin)
+    {
+        sendList.ChargePrivacyCoin = sendList_charge.ChargePrivacyCoin;
+    }
 }
-let sendList_refund = JSON.parse(fs.readFileSync('./sendList_refund.json'));
-if(sendList_refund && sendList_refund.refund)
-{
-    sendList.refund = sendList_refund.refund;
+if(fs.existsSync('./sendList_refund.json')) {
+    let sendList_refund = JSON.parse(fs.readFileSync('./sendList_refund.json'));
+    if (sendList_refund && sendList_refund.refund) {
+        sendList.refund = sendList_refund.refund;
+    }
 }
 let wanUtil = require('wanchain-util');
 web3.wan = new wanUtil.web3Wan(web3);
