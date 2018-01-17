@@ -81,13 +81,13 @@
                 ]
            }
            
-   ###second: Connect web3 and run `node initSendList.js`
+###second: Connect web3 and run `node initSendList.js`
        
    - Set the truth nonce.
    - Set the OTAset for ringSign.
    - The result file is "sendListWithNonce.json"
     
-   ###third: run `node batchSign.js` 
+###third: run `node batchSign.js` 
    
    - Set from address password in 'batchSign.js'
    
@@ -99,7 +99,7 @@
    
             For example: 2018-1-15-10-14-56_OTABalance.json
    
-   ### finally: Connect web3 and run `node batchRawSendTrans.js`
+### finally: Connect web3 and run `node batchRawSendTrans.js`
    
    - Send the signed transactions list.
    - The transaction hash result file is 'transHash.json'
