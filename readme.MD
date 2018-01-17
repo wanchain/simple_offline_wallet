@@ -81,13 +81,15 @@
                 ]
            }
            
-###second: Connect web3 and run `node initSendList.js`
+
+### second: Connect web3 and run `node initSendList.js`
        
    - Set the truth nonce.
    - Set the OTAset for ringSign.
    - The result file is "sendListWithNonce.json"
     
-###third: run `node batchSign.js` 
+
+### third: run `node batchSign.js` 
    
    - Set from address password in 'batchSign.js'
    
