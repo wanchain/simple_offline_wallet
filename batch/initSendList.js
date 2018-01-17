@@ -46,5 +46,9 @@ web3.eth.getTransactionCount(sendList.from,function (err,result) {
         }
         OTALoop.run();
     }
+    else{
+        console.log(err.message);
+        process.exit();
+    }
 
 })
