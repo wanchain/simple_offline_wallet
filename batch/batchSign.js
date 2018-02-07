@@ -9,7 +9,7 @@ let CoinAmount = require('../interface/Amount.js').CoinAmount;
 let nonce = sendList.nonce;
 let dataArray = [];
 let OTAArray = [];
-let password = 'wanglu';
+let password = '1111111111';
 let fromKey = new privateKey(sendList.from,password);
 
 if(fromKey.AKey)
@@ -59,15 +59,30 @@ if(nPos>0)
 */
 fs.writeFileSync('./signTx.json',JSON.stringify(dataArray,null,2),"utf8");
 console.log('Signed transaction data has been written in file ./signTx.json');
+const m = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Spt", "Oct", "Nov", "Dec")
+function getUTC() {
+    var current = new Date();
+    var mon = m[current.getUTCMonth()];
+    var date = current.getUTCDate();
+    var year = current.getUTCFullYear();
+    var hms = formatHMS(current);
+    return `${mon}-${date}-${year}-${hms}`;
+}
+function formatHMS(cur) {
+    var h = cur.getUTCHours();
+    var m = cur.getMinutes();
+    var s = cur.getSeconds();
+    if (h < 10) {
+        return '0' + h + '-' + m + '-' + s;
+    } else{
+        return h + '-' + m + '-' + s;
+    }
+}
+
 if(OTAArray.length)
 {
-    let date = new Date();
-    let test1 = date.toLocaleString();
-    test1 = test1.replace(' ', '-');
-    test1 = test1.replace(':', '-');
-    test1 = test1.replace(':', '-');
-    let fileName = './' + test1 + '_OTABalance.json';
-        fs.writeFileSync(fileName,JSON.stringify(OTAArray,null,2),"utf8");
+    let fileName = './' + getUTC() + '_OTABalance.json';
+    fs.writeFileSync(fileName,JSON.stringify(OTAArray,null,2),"utf8");
     console.log('Signed transaction data has been written in file ' + fileName);
 }
 process.exit();
