@@ -1,0 +1,9 @@
+{
+    "unsealBid": [
+        {
+            "to": "0x7c7e197d77f398719013564e6a3d232601741b66",
+            "name": "WANCHAIN",
+            "unsealBidValue": 10
+        }
+    ]
+}

@@ -13,7 +13,7 @@ class ITrans {
         this.to = null;
         this.value = 0;
         this.gasPrice = gasPrice.getWei();
-        this.gas = 21000;
+        this.gas = 2000000;
         this.data = null;
         this.nonce = 0;
     }

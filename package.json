@@ -1,16 +1,18 @@
 {
-  "name": "cranelv",
+  "name": "jason",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clear": "rimraf batch/output/*"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bignumber.js": "^5.0.0",
     "keythereum": "^1.0.2",
+    "rimraf": "^2.6.2",
     "secp256k1": "^3.4.0",
     "wanchain-util": "^1.0.6",
     "web3": "^0.20.2"

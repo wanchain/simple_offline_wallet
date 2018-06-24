@@ -1,21 +1,19 @@
 const fs = require('fs');
-let web3 = require('../web3/initweb3.js');
-let ASyncLoopStack = require('./ASyncLoopStack.js');
-let transArray = JSON.parse(
-    fs.readFileSync('./signTx.json'));
-let transLoop = new ASyncLoopStack(1);
-transLoop.Array = transArray;
-let tranHashArray = [];
-transLoop.EachFunc = function (param,item,index) {
-    web3.eth.sendRawTransaction(item,function (err,result) {
-        if(!err)
-        {
+const web3 = require('../web3/initweb3.js');
+const ASyncLoopStack = require('./ASyncLoopStack.js');
+
+const tranHashArray = [];
+const transLoop = new ASyncLoopStack(1);
+
+transLoop.Array = JSON.parse(fs.readFileSync('./output/signTx.json'));
+
+transLoop.EachFunc = function (param, item, index) {
+    web3.eth.sendRawTransaction(item, function (err, result) {
+        if (!err) {
             console.log(result);
             tranHashArray.push(result);
             transLoop.stepNext();
-        }
-        else
-        {
+        } else {
             console.log(err.message);
             tranHashArray.push('');
             transLoop.stepNext();
@@ -24,8 +22,8 @@ transLoop.EachFunc = function (param,item,index) {
 }
 transLoop.EndFunc = function () {
     console.log("send Transaction complete!");
-    fs.writeFileSync('./transHash.json',JSON.stringify(tranHashArray,null,2),"utf8");
-    console.log('transHash transaction data has been written in file ./transHash.json');
+    fs.writeFileSync('./output/transHash.json', JSON.stringify(tranHashArray, null, 2), "utf8");
+    console.log('transHash transaction data has been written in file ./output/transHash.json');
     process.exit();
 }
 transLoop.run();

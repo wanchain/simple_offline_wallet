@@ -1,25 +1,9 @@
 {
-  "from": "0x2912bCf72eF78AAAe7A922DC507E11a28Ca890e8",
+  "from": "0xc0004D0AF2B8A6A3b2566843cC83B34493F2ef17",
   "normal": [
     {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 1
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 2
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 3
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 4
-    },
-    {
-      "to": "0x6308a65d21A09Ab28e10E5c392C3a7b70a3Ef1C0",
-      "amount": 5
+      "to": "0xAa372456c93268e46796b2e9D77D2764923F819c",
+      "amount": 10
     }
   ]
 }

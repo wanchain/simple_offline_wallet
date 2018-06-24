@@ -15,7 +15,7 @@ class refundOTASend extends TokenSend
         this.trans.setTo(this.Contract.tokenAddress);
         this.trans.setGas(600000);
         let otaAddress = new ownOTAAddress(OTAaddress);
-        let RingData = otaAddress.getRingSignData(from,privateKey,OTAset)
+        let RingData = otaAddress.getRingSignData(from,privateKey,OTAset);
         this.trans.setData(this.Contract.getData(RingData,CoinAmount));
     }
 }

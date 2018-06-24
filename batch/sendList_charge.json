@@ -1,40 +1,8 @@
 {
   "ChargePrivacyCoin": [
     {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 10
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
+      "to": "0x0323f39c0f4d63b0e9b24ca4aab36a3ca71b48102222c2ced8482cfa99b743922903807e46fb7591ba9b45c0e09281464c78cbb76ed0d992e517d46ec27103124963",
       "facevalue": 20
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 50
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 100
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 200
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 500
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 1000
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 5000
-    },
-    {
-      "to": "0x02f6436055b35dd2bd3df31ab9a563bbe7bc3068b0cbeae64f513d748923569df0035c4f0ba507c26b6aec4dc643a19d071f21e83058e819fa78a21fcb4cc36c40ad",
-      "facevalue": 50000
     }
   ]
 }

@@ -1,10 +1,13 @@
 let web3 = require('../web3/initweb3.js');
+let web3Http = require('../methodWns/index').web3
 class IContract{
-    constructor()
+    constructor(abi,contractFunc,contractAddr)
     {
-        this.Abi = null;
-        this.func = null;
-        this.tokenAddress = null;
+        this.Abi = abi;
+        this.func = contractFunc;
+        if(contractAddr){
+            this.setTokenAddress(contractAddr);
+        }
     }
     setAbi(Abi)
     {
@@ -21,15 +24,15 @@ class IContract{
     {
         this.func = funcName;
     }
-    getFuncInterface()
+    getFuncInterface(funcName)
     {
         if(this.Abi && this.tokenAddress)
         {
-            var standardtokenContract = web3.eth.contract(this.Abi);
+            var standardtokenContract = web3Http.eth.contract(this.Abi);
             let TokenInstance = standardtokenContract.at(this.tokenAddress);
-            if(TokenInstance[this.func])
+            if(TokenInstance[funcName])
             {
-                return TokenInstance[this.func];
+                return TokenInstance[funcName];
             }
             else
             {
@@ -38,6 +41,7 @@ class IContract{
         }
     }
 };
+
 var wanAbi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_toKey","type":"bytes"},{"name":"_value","type":"uint256"}],"name":"otatransfer","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"privacyBalance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"wanport","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"initialBase","type":"address"},{"name":"baseKeyBytes","type":"bytes"},{"name":"value","type":"uint256"}],"name":"initPrivacyAsset","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"otabalanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"receipient","type":"address"}],"name":"buyWanCoin","outputs":[{"name":"","type":"bool"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"otaKey","outputs":[{"name":"","type":"bytes"}],"payable":false,"stateMutability":"view","type":"function"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_spender","type":"address"},{"indexed":false,"name":"_value","type":"uint256"}],"name":"Approval","type":"event"}];
 class wanContract  extends IContract
 {
@@ -50,13 +54,14 @@ class wanContract  extends IContract
     }
     getData(toAddress,IAmount)
     {
-        let funcInterface = this.getFuncInterface();
+        let funcInterface = this.getFuncInterface(this.func);
         if(funcInterface)
         {
             return funcInterface.getData(toAddress,IAmount.getWei());
         }
     }
 }
+
 let coinSCAbi = [{"constant":false,"type":"function","stateMutability":"nonpayable","inputs":[{"name":"OtaAddr","type":"string"},{"name":"Value","type":"uint256"}],"name":"buyCoinNote","outputs":[{"name":"OtaAddr","type":"string"},{"name":"Value","type":"uint256"}]},{"constant":false,"type":"function","inputs":[{"name":"RingSignedData","type":"string"},{"name":"Value","type":"uint256"}],"name":"refundCoin","outputs":[{"name":"RingSignedData","type":"string"},{"name":"Value","type":"uint256"}]},{"constant":false,"inputs":[],"name":"getCoins","outputs":[{"name":"Value","type":"uint256"}]}];
 let contractCoinAddress = '0x0000000000000000000000000000000000000064';
 class PrivacyContract extends IContract
@@ -70,7 +75,7 @@ class PrivacyContract extends IContract
     }
     getData(OTA,IAmount)
     {
-        let funcInterface = this.getFuncInterface();
+        let funcInterface = this.getFuncInterface(this.func);
         if(funcInterface)
         {
             return funcInterface.getData(OTA,IAmount.getWei());
@@ -86,13 +91,14 @@ class refundOTAContract extends PrivacyContract
     }
     getData(ringSign,IAmount)
     {
-        let funcInterface = this.getFuncInterface();
+        let funcInterface = this.getFuncInterface(this.func);
         if(funcInterface)
         {
             return funcInterface.getData(ringSign,IAmount.getWei());
         }
     }
 }
+
 let stampContractAddr = "0x00000000000000000000000000000000000000c8";
 var abiDefStamp = [{"constant":false,"type":"function","stateMutability":"nonpayable","inputs":[{"name":"OtaAddr","type":"string"},{"name":"Value","type":"uint256"}],"name":"buyStamp","outputs":[{"name":"OtaAddr","type":"string"},{"name":"Value","type":"uint256"}]},{"constant":false,"type":"function","inputs":[{"name":"RingSignedData","type":"string"},{"name":"Value","type":"uint256"}],"name":"refundCoin","outputs":[{"name":"RingSignedData","type":"string"},{"name":"Value","type":"uint256"}]},{"constant":false,"type":"function","stateMutability":"nonpayable","inputs":[],"name":"getCoins","outputs":[{"name":"Value","type":"uint256"}]}];
 class stampContract extends IContract
@@ -106,14 +112,16 @@ class stampContract extends IContract
     }
     getData(otaAddrStamp,IAmount)
     {
-        let funcInterface = this.getFuncInterface();
+        let funcInterface = this.getFuncInterface(this.func);
         if(funcInterface)
         {
             return funcInterface.getData(otaAddrStamp,IAmount.getWei());
         }
     }
 }
+
 exports.wanContract = wanContract;
 exports.PrivacyContract = PrivacyContract;
 exports.refundOTAContract = refundOTAContract;
 exports.stampContract = stampContract;
+exports.IContract = IContract;
