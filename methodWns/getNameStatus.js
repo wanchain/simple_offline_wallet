@@ -9,6 +9,7 @@ const name = process.argv[2];
 
 // 0x9c1a5a0bd9fdd85847608e694f3e6e0768a6db59, JIAN
 // 0xe85cfdf43a0db4aa0ec054a57451af7c73d4625b, YING
+// 0xee8d418fd33e69782015ea4313dfd8eb7b1b91ce
 var wnsContract = web3.eth.contract(ABIWNSRegistry);
 var wns = wnsContract.at('0x9c1a5a0bd9fdd85847608e694f3e6e0768a6db59');
 

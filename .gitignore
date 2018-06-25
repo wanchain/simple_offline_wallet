@@ -3,4 +3,5 @@ node_modules/
 logs/
 # python compiled bytecode
 *.pyc
-
+domain*.json
+use.txt
